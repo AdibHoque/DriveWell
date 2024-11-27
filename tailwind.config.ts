@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type {Config} from "tailwindcss";
 
 export default {
   content: [
@@ -9,6 +9,11 @@ export default {
   theme: {
     extend: {
       colors: {
+        primary: {
+          500: "#FF3811",
+          DEFAULT: "#FF3811",
+          foreground: "hsl(var(--primary-foreground))",
+        },
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
