@@ -6,7 +6,7 @@ import {Button} from "../ui/button";
 
 export const Header = () => {
   return (
-    <div className="border-b">
+    <div className="border-b px-4">
       <div className="w-full flex items-center justify-between wrapper">
         <Link href="/" className="w-36">
           <Image src="/logo.svg" alt="logo" width={80} height={28} />
@@ -16,9 +16,15 @@ export const Header = () => {
           <NavItems></NavItems>
         </nav>
 
-        <div className="flex gap-3 items-center">
-          <ShoppingCart />
-          <Search />
+        <div className="flex gap-2 items-center">
+          <Button size="icon" variant="ghost">
+            <ShoppingCart />
+          </Button>
+
+          <Button size="icon" variant="ghost">
+            <Search />
+          </Button>
+
           <Button variant="default" className="">
             Login
           </Button>
