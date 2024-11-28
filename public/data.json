@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Oil Change Service",
+    "price": 50,
+    "image": "/images/services/1.jpg",
+    "id": "b6d767d2f8ed5d21a44b0e5886680cb9"
+  },
+  {
+    "name": "Brake Replacement",
+    "price": 200,
+    "image": "/images/services/2.jpg",
+    "id": "9d5ed678fe57bcca610140957afab571"
+  },
+  {
+    "name": "Tire Alignment",
+    "price": 75,
+    "image": "/images/services/3.jpg",
+    "id": "d2ddea18f00665ce8623e36bd4e3c7c5"
+  },
+  {
+    "name": "Battery Replacement",
+    "price": 120,
+    "image": "/images/services/4.jpg",
+    "id": "98f13708210194c475687be6106a3b84"
+  },
+  {
+    "name": "Air Conditioning Repair",
+    "price": 150,
+    "image": "/images/services/5.jpg",
+    "id": "3c59dc048e8850243be8079a5c74d079"
+  },
+  {
+    "name": "Engine Diagnostics",
+    "price": 100,
+    "image": "/images/services/6.jpg",
+    "id": "d95679752134a2d9eb61dbd7b91c4bcc"
+  }
+]
