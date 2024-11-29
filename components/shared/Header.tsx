@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import NavItems from "./NavItems";
-import {Search, ShoppingCart} from "lucide-react";
+import {Search} from "lucide-react";
 import {Button} from "../ui/button";
+import CartButton from "./CartButton";
 
 export const Header = () => {
   return (
@@ -17,9 +18,7 @@ export const Header = () => {
         </nav>
 
         <div className="flex gap-2 items-center">
-          <Button size="icon" variant="ghost">
-            <ShoppingCart />
-          </Button>
+          <CartButton />
 
           <Button size="icon" variant="ghost">
             <Search />
