@@ -58,7 +58,7 @@ const CartButton = () => {
           {items.length}
         </div>
         {open ? (
-          <div className="bg-white border-primary border rounded-md absolute z-50 w-[320px] md:w-[340px] -right-24 md:-right-0 top-10 p-2 text-wrap">
+          <div className="bg-white border-primary border rounded-md absolute z-50 w-[320px] md:w-[340px] max-sm:transform max-sm:-left-1/2 max-sm:-translate-x-1/2 -right-24 md:-right-0 top-10 p-2 text-wrap">
             {items.length > 0
               ? items.map((item) => <CartItem key={item.id} item={item} />)
               : "Cart Empty"}
@@ -85,7 +85,8 @@ const CartButton = () => {
             )}
           </div>
         ) : (
-          <div className="bg-white border-primary border rounded-md absolute invisible group-hover:visible z-20 w-[320px] md:w-[340px] -right-24 md:-right-0 top-10 p-2 text-wrap">
+          // -right-24 md:-right-0
+          <div className="bg-white border-primary border rounded-md absolute invisible group-hover:visible z-20 w-[320px] md:w-[340px] max-sm:transform max-sm:-left-1/2 max-sm:-translate-x-1/2 -right-24 md:-right-0 top-10 p-2 text-wrap">
             {items.length > 0
               ? items.map((item) => <CartItem key={item.id} item={item} />)
               : "Cart Empty"}
