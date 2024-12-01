@@ -12,3 +12,10 @@ export const headerLinks = [
     route: "/contact",
   },
 ];
+
+export type Product = {
+  name: string;
+  price: number;
+  image: string;
+  id: string;
+};

@@ -5,26 +5,35 @@ import {Button} from "../ui/button";
 import {useDispatch} from "react-redux";
 import {addToCart} from "@/redux/cartSlice";
 import Swal from "sweetalert2";
+import {Product} from "@/constants";
 
-type CardProps = {
-  name: string;
-  price: number;
-  image: string;
-  id: string;
-};
-
-export const Card = ({name, price, image, id}: CardProps) => {
+export const Card = ({name, price, image, id}: Product) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    dispatch(addToCart({id, name, price, image}));
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Added to your Cart!",
-      showConfirmButton: false,
-      timer: 1500,
-    });
+    try {
+      dispatch(addToCart({id, name, price, image}));
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Added to your Cart!",
+        text: name,
+        showConfirmButton: false,
+        timer: 1000,
+      });
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : "Something went wrong!";
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Failed to Add to Cart",
+        text: errorMessage,
+        timer: 2000,
+        showConfirmButton: true,
+      });
+    }
   };
 
   return (

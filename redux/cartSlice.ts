@@ -23,6 +23,8 @@ const cartSlice = createSlice({
       const exists = state.items.some((item) => item.id === action.payload.id);
       if (!exists) {
         state.items.push(action.payload);
+      } else {
+        throw new Error("Item is already in the cart");
       }
     },
     removeFromCart: (state, action: PayloadAction<string>) => {
