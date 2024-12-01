@@ -1,17 +1,28 @@
 "use client";
 
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Button} from "../ui/button";
-import {ShoppingCart} from "lucide-react";
+import {ShoppingCart, X} from "lucide-react";
 import {RootState} from "@/redux/store";
 import Image from "next/image";
 import {Product} from "@/constants";
 import {useState} from "react";
+import {clearCart, removeFromCart} from "@/redux/cartSlice";
 
 const CartItem = ({item}: {item: Product}) => {
+  const dispatch = useDispatch();
   const {id, name, price, image} = item;
   return (
-    <div className="w-full flex gap-5 items-center my-2 mx-1 hover:bg-black/10">
+    <div className="w-full flex gap-5 items-center my-2 mx-1">
+      <Button
+        onClick={() => dispatch(removeFromCart(id))}
+        className="rounded-full border border-primary"
+        size="icon"
+        variant="ghost"
+      >
+        <X className="text-2xl" />
+      </Button>
+
       <Image
         src={image}
         width={100}
@@ -28,6 +39,7 @@ const CartItem = ({item}: {item: Product}) => {
 };
 
 const CartButton = () => {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const items = useSelector((state: RootState) => state.cart.items);
   return (
@@ -46,14 +58,22 @@ const CartButton = () => {
           {items.length}
         </div>
         {open ? (
-          <div className="bg-white border-slate-600/50 border rounded-sm absolute z-50 min-w-[300px] -right-24 md:-right-0 top-10 p-2 text-wrap">
+          <div className="bg-white border-primary border rounded-md absolute z-50 w-[320px] md:w-[340px] -right-24 md:-right-0 top-10 p-2 text-wrap">
             {items.length > 0
               ? items.map((item) => <CartItem key={item.id} item={item} />)
               : "Cart Empty"}
             {items.length > 0 ? (
               <div className="flex justify-between items-center my-2 mx-1">
-                <p>Total Price:</p>{" "}
-                <p>${items.reduce((total, item) => total + item.price, 0)}</p>
+                <p>
+                  Total Price: $
+                  {items.reduce((total, item) => total + item.price, 0)}
+                </p>
+                <p
+                  onClick={() => dispatch(clearCart())}
+                  className="text-[#444444] hover:text-primary hover:cursor-pointer"
+                >
+                  Clear Cart
+                </p>
               </div>
             ) : (
               ""
@@ -65,14 +85,22 @@ const CartButton = () => {
             )}
           </div>
         ) : (
-          <div className="bg-white border-slate-600/50 border rounded-sm absolute invisible group-hover:visible z-20 min-w-[300px] -right-24 md:-right-0 top-10 p-2 text-wrap">
+          <div className="bg-white border-primary border rounded-md absolute invisible group-hover:visible z-20 w-[320px] md:w-[340px] -right-24 md:-right-0 top-10 p-2 text-wrap">
             {items.length > 0
               ? items.map((item) => <CartItem key={item.id} item={item} />)
               : "Cart Empty"}
             {items.length > 0 ? (
               <div className="flex justify-between items-center my-2 mx-1">
-                <p>Total Price:</p>{" "}
-                <p>${items.reduce((total, item) => total + item.price, 0)}</p>
+                <p>
+                  Total Price: $
+                  {items.reduce((total, item) => total + item.price, 0)}
+                </p>
+                <p
+                  onClick={() => dispatch(clearCart())}
+                  className="text-[#444444] hover:text-primary hover:cursor-pointer"
+                >
+                  Clear Cart
+                </p>
               </div>
             ) : (
               ""
