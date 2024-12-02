@@ -88,7 +88,9 @@ const CartButton = () => {
           // -right-24 md:-right-0
           <div className="bg-white border-primary border rounded-md absolute invisible group-hover:visible z-20 w-[320px] md:w-[340px] max-sm:transform max-sm:-left-1/2 max-sm:-translate-x-1/2 -right-24 md:-right-0 top-10 p-2 text-wrap">
             {items.length > 0
-              ? items.map((item) => <CartItem key={item.id} item={item} />)
+              ? items.map((item: Product) => (
+                  <CartItem key={item.id} item={item} />
+                ))
               : "Cart Empty"}
             {items.length > 0 ? (
               <div className="flex justify-between items-center my-2 mx-1">
